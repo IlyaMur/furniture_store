@@ -12,6 +12,5 @@ const setupStore = products => {
   setStorageItem('store', store);
 };
 
-console.log('store.js: ', store);
 const findProduct = () => {};
 export { store, setupStore, findProduct };
