@@ -10,7 +10,19 @@ import { findProduct } from '../store.js';
 import addToCartDOM from './addToCartDOM.js';
 // set items
 
-export const addToCart = id => {
+const cartItemCountDOM = getElement('.cart-item-count');
+const cartItemsDOM = getElement('.cart-item');
+const cartTotalDOM = getElement('.cart-total');
+
+let cart = getStorageItem('cart');
+
+export const addToCart = (id) => {
   console.log(id);
   openCart();
 };
+
+const init = () => {
+  console.log(cart);
+};
+
+init();

@@ -3,7 +3,7 @@ const allProductsUrl = 'https://course-api.com/javascript-store-products';
 const singleProductUrl =
   'https://course-api.com/javascript-store-single-product';
 
-const getElement = selection => {
+const getElement = (selection) => {
   const element = document.querySelector(selection);
   if (element) return element;
   throw new Error(
@@ -11,7 +11,7 @@ const getElement = selection => {
   );
 };
 
-const formatPrice = price => {
+const formatPrice = (price) => {
   let formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -19,7 +19,7 @@ const formatPrice = price => {
   return formattedPrice;
 };
 
-const getStorageItem = name => {
+const getStorageItem = (name) => {
   let storageItem = localStorage.getItem(name);
   if (storageItem) {
     storageItem = JSON.parse(storageItem);
