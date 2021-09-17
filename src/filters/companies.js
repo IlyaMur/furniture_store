@@ -1,16 +1,16 @@
 import { getElement } from '../utils.js';
 import display from '../displayProducts.js';
 
-const setupCompanies = store => {
-  let companies = ['all', ...new Set(store.map(product => product.company))];
+const setupCompanies = (store) => {
+  let companies = ['all', ...new Set(store.map((product) => product.company))];
   const companiesDOM = getElement('.companies');
   companiesDOM.innerHTML = companies
-    .map(company => {
+    .map((company) => {
       return `<button class="company-btn">${company}</button>`;
     })
     .join('');
 
-  companiesDOM.addEventListener('click', e => {
+  companiesDOM.addEventListener('click', (e) => {
     const target = e.target;
 
     if (target.classList.contains('company-btn')) {
@@ -18,11 +18,11 @@ const setupCompanies = store => {
       if (target.textContent === 'all') {
         newStore = [...store];
       } else {
-        newStore = store.filter(product => {
+        newStore = store.filter((product) => {
           return product.company === target.textContent;
         });
       }
-      display(newStore, getElement('.products-container'));
+      display(newStore, getElement('.products-container'), true);
     }
   });
 };
