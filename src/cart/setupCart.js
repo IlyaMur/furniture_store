@@ -16,6 +16,9 @@ const cartTotalDOM = getElement('.cart-total');
 
 let cart = getStorageItem('cart');
 
+const removeItem = (id) => {
+  cart = cart.filter((cartItem) => cartItem.id !== id);
+};
 const displayCartItemCount = () => {
   const amount = cart.reduce((total, cartItem) => {
     return (total += cartItem.amount);
@@ -72,7 +75,26 @@ const displayCartItemDOM = () => {
   });
 };
 
-const setupCartFunctionality = () => {};
+const setupCartFunctionality = () => {
+  cartItemsDOM.addEventListener('click', (e) => {
+    const el = e.target;
+    const parent = e.target.parentElement;
+    const id = e.target.dataset.id;
+    const parentID = e.target.parentElement.dataset.id;
+
+    // remove
+    if (el.classList.contains('cart-item-remove-btn')) {
+      removeItem(id);
+      parent.parentElement.remove();
+    }
+    // increase
+    // decrease
+
+    displayCartItemCount();
+    displayCartTotal();
+    setStorageItem('cart', cart);
+  });
+};
 const init = () => {
   // display amount of cart items
   displayCartItemCount();
