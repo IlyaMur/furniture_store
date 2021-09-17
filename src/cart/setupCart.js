@@ -28,7 +28,6 @@ const displayCartTotal = () => {
     return (total += cartItem.price * cartItem.amount);
   }, 0);
 
-  console.log(total);
   cartTotalDOM.textContent = `Total : ${formatPrice(total)}`;
 };
 
@@ -50,9 +49,21 @@ export const addToCart = (id) => {
   setStorageItem('cart', cart);
   openCart();
 };
-
+const displayCartItemDOM = () => {
+  cart.forEach((cartItem) => {
+    addToCartDOM(cartItem);
+  });
+};
+const setupCartFunctionality = () => {};
 const init = () => {
-  console.log(cart);
+  // display amount of cart items
+  displayCartItemCount();
+  // display total
+  displayCartTotal();
+  // add all cart items to the dom
+  displayCartItemDOM();
+  // set up cart functionality
+  setupCartFunctionality();
 };
 
 init();
